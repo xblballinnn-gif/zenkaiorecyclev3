@@ -11,7 +11,7 @@ Minecraft 1.20.2, Forge 48.1.0, Java 17. Client-side only. Requires Baritone (se
 
 Hotbar slot 1 (the pickaxe) is never moved or dropped. Slots 2-36 are for ore only.
 While mining, the ore is spread over the empty slots (one item each, taken from the biggest stack) so there is no empty slot
-left for cobblestone, iron or anything else to be picked up into. Anything that is not raw gold, coal or their blocks is
+left for cobblestone, iron or anything else to be picked up into. Anything that is not raw gold, coal, their blocks or a shulker box is
 dropped every second anyway, and once more right after the vault closes.
 Auto-eat: while the loop runs, when hunger drops to 3 bars (6 food points) or lower, whatever is in your OFF HAND
 (your senzu beans) is eaten. If the off hand is empty you get a chat warning instead.
@@ -25,7 +25,7 @@ Auto-eat: while the loop runs, when hunger drops to 3 bars (6 food points) or lo
 - **Auto reconnect:** if the server kicks you or the connection drops, it rejoins the same server (every 15 s, up to 40 tries),
   waits 10 s after joining, then uses `/rtp` and only starts mining once it has really moved you (new world or 50+ blocks away); it retries up to 15 times. Quitting to the menu yourself does not trigger it.
 - **HUD:** a panel in the top-left (state, ore, idle timer, pickaxe durability, hunger, rounds, rtp and reconnect counts).
-  It only shows while the loop is running and disappears when you stop it. Hidden with F1 or F3.
+  It only shows while the loop is running and disappears when you stop it. Hidden with F1.
 
 ## Keys (rebind under Options > Controls > Zenkai Ore Cycle)
 - **=** start / stop the loop
