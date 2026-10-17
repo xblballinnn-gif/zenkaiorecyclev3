@@ -18,7 +18,7 @@ public final class Hud {
     @SubscribeEvent
     public static void onRender(RenderGuiEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
-        if (!CycleRunner.running() || mc.player == null || mc.options.hideGui || mc.options.renderDebug) {
+        if (!CycleRunner.running() || mc.player == null || mc.options.hideGui) {
             return;
         }
         List<String> lines = CycleRunner.hudLines(mc);
