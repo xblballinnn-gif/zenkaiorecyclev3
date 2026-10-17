@@ -8,7 +8,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.ShulkerBoxBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 
@@ -24,6 +26,11 @@ final class Inv {
             Items.RAW_GOLD, Items.COAL, Items.RAW_GOLD_BLOCK, Items.COAL_BLOCK, Items.NETHERITE_PICKAXE);
 
     private Inv() {
+    }
+
+    /** Shulker boxes (any colour) are never dropped. */
+    static boolean isShulkerBox(ItemStack s) {
+        return s.getItem() instanceof BlockItem b && b.getBlock() instanceof ShulkerBoxBlock;
     }
 
     static int emptySlots(LocalPlayer p) {
@@ -67,7 +74,7 @@ final class Inv {
         int dropped = 0;
         for (int i = FIRST_FREE_INDEX; i <= 35; i++) {
             ItemStack s = p.getInventory().items.get(i);
-            if (!s.isEmpty() && !KEEP.contains(s.getItem())) {
+            if (!s.isEmpty() && !KEEP.contains(s.getItem()) && !isShulkerBox(s)) {
                 // button 1 with THROW drops the whole stack
                 mc.gameMode.handleInventoryMouseClick(p.inventoryMenu.containerId, menuSlot(i), 1, ClickType.THROW, p);
                 dropped++;
